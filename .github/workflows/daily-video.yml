@@ -2,8 +2,7 @@ name: Daily AI Video Generator
 
 on:
   schedule:
-- cron: '* * * * *'
-jobs:
+- cron: '4 20 * * *'jobs:
   generate-video:
     workflow_dispatch:
     runs-on: ubuntu-latest
