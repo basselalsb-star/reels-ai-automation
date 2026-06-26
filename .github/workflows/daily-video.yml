@@ -2,8 +2,7 @@ name: Daily AI Video Generator
 
 on:
   schedule:
-    - cron: '0 9 * * *'
-
+- cron: '* * * * *'
 jobs:
   generate-video:
     workflow_dispatch:
