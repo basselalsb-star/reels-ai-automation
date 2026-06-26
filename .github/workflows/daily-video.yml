@@ -1,0 +1,27 @@
+name: Daily AI Video Generator
+
+on:
+  schedule:
+    - cron: '0 9 * * *'
+
+jobs:
+  generate-video:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Generate Video
+        env:
+          KLING_API_KEY: ${{ secrets.KLING_API_KEY }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+          CHANNEL_ID: UC5HUIbnPDXaeuzoA26KJZVA
+        run: node generate-video.js
